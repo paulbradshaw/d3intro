@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+</head>
+<body>
+  <p>When we get a lot of data values, rather than sizing each bar (div tag) by multipying each data value, it's better to factor in what sort of range of values they use.</p>
+      <p>This is typically done by finding out what the maximum value is, with 'd3.max()', and using that to create a 'domain' - "the boundaries within which your data lies", according to <a href="http://javascript.tutorialhorizon.com/2015/01/17/d3-fundamentals-understanding-domain-range-and-scales-in-d3js/">this useful walkthrough of that concept alongside range and scales</a>. The range is also set - that's the space within which the chart can exist</p>
+
+  <div class="fillmeup"></div>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.10.0/d3.min.js"></script>
+
+<script>
+
+//this creates an array variable to store data
+var somedata = [10,30,60];
+//this calculates the range of values in the data - which can then be used below
+var x = d3.scaleLinear()
+    .domain([0, d3.max(somedata)])
+    .range([0, 600]);
+//This selects all div tags - there is  none so it will then create them
+d3.select('.fillmeup')
+  .selectAll('div')
+//This grabs the variable created earlier.
+  .data(somedata)
+  .enter()
+//Because there are 3 elements, this will create 3 placeholder elements
+.append('div')
+//This function assigns each value to d  and multiplies it, adds 'px', before inserting it as the value for 'width'
+  .style("width", function(d){
+  return x(d) + "px";
+})
+.style("background-color", "red")
+.style("margin", "5px")
+.text(function(d){
+  return d;
+})
+
+
+</script>
+</body>
+</html>

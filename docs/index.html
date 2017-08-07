@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.10.0/d3.min.js"></script>
+
+  </head>
+  <body>
+    <p>This page uses D3 to pull in data.</p>
+    <p>Note that, because there are already two paragraph tags, those are not changed by the data. This can be solved by adding <code>.attr("class","hello")</code> to the p tags being appended: because no p tags exist <em>with that class</em>, the elements are created from scratch</p>
+    <script type="text/javascript">
+    var crimedata = [ 50, 23, 78, 22, 100 ]
+    d3.selectAll("p")
+      .data(crimedata)
+      .enter()
+      .append("p")
+      .text( function (d){
+        return d;
+      });
+
+    </script>
+  </body>
+</html>
