@@ -6,17 +6,10 @@
 
   </head>
   <body>
-    <p>This page uses D3 to pull in data.</p>
-    <p>Note that, because there are already two paragraph tags, those are not changed by the data. This can be solved by adding <code>.attr("class","hello")</code> to the p tags being appended: because no p tags exist <em>with that class</em>, the elements are created from scratch</p>
+    <p></p>
     <script type="text/javascript">
-    var crimedata = [ 50, 23, 78, 22, 100 ]
-    d3.selectAll("p")
-      .data(crimedata)
-      .enter()
-      .append("p")
-      .text( function (d){
-        return d;
-      });
+    d3.select("p")
+      .text("This page links to examples of D3. In the code for this page, for example, this text is being added to an empty p tag by the D3 'select' and 'text' method. Try opening the Console in the Inspector and typing 'd3.' - you should see options appear, and you can experiment with code directly there.")
 
     </script>
   </body>
