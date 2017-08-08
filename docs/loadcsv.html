@@ -8,6 +8,7 @@
   <body>
     <p>This pen makes the code cleaner than <a href="https://codepen.io/paulbradshaw/pen/eEgeaP">this earlier one</a> by assigning different parts of the chart creation process to variables - one for the chart, another for the bars inside - instead of chaining them all together in one.
 </p>
+<div class="newpars"></div>
 
 <svg class="fillmeup"></svg>
     <script type="text/javascript">
@@ -25,6 +26,10 @@ function(error, data) {
   console.log(somedata);
   console.log(somedata[1]);
   console.log(somedata[1].value);
+  d3.select("div.newpars").selectAll("p.data").data(somedata).enter().append("p")
+    .html(function(d){
+      return d.name+": "+d.value;
+    })
   });
 
 console.log("Note that this code runs before the other console.log commands even though those appear earlier in the code. Also, see how the somedata variable is empty at this point: "+somedata+", yes?");
