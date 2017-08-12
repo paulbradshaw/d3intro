@@ -14,8 +14,8 @@ You can either download the latest version of the D3 library, or link to an onli
 
 D3 selects, adds, and customises elements on the HTML page using a number of methods:
 
-* The `.select()` and `.selectAll()` methods select HTML tags that you want to change or add. `.select()` only selects the *first* match, while `.selectAll()` obviously selects more than one.
-* D3 can *add* child elements using `.append()`. For example you might select a div, and append within that a new paragraph, or SVG shape.
+* The `.select()` and `.selectAll()` methods select HTML tags that you want to change or add. `.select()` only selects the *first* match, while `.selectAll()` obviously selects more than one. These work just like CSS, so to select something in `<p class="story">` you might write `.select("p.story")`
+* D3 can *add* child elements using `.append()`. For example you might select a div, and append within that a new paragraph, or SVG shape, like so: `.append("p")`
 * You can change *attributes* using `.attr()` - with an attribute-value pair separated by commas like so: `.attr("class","mything")` or `.attr("height", 100)` (note that the first example has a string value, and the second a numerical value without quotation marks).
 * You can add CSS *styling* with `.style()` in a similar way, e.g. `select("a").style("color", "red");`
 * You can add *content* to elements using `.text()` (if you only want to change the text inside a tag) and `.html()` (if you want to add text and HTML tags)
