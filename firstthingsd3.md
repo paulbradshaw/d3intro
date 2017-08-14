@@ -1,6 +1,6 @@
 # First things to do in D3
 
-## Import the D3 library from CDNJS
+## 1. Import the D3 library from CDNJS
 
 You can either download the latest version of the D3 library, or link to an online version. The advantage of linking to an online version on a CDN service is that it saves space and speed (it's served quicker). Here, is the code to pull in the D3 library from CDNJS - version 4.10.0 at the time of writing, but [check the site](https://cdnjs.com/#) for the latest version. This should be placed within your `<head>` tags:
 
@@ -10,7 +10,7 @@ You can either download the latest version of the D3 library, or link to an onli
 </head>
 ```
 
-## Select, add, and change HTML using `.select()` and `.append()`
+## 2. Select, add, and change HTML using `.select()` and `.append()`
 
 D3 selects, adds, and customises elements on the HTML page using a number of methods:
 
@@ -58,7 +58,7 @@ To use the same code within your HTML, add the following script:
 </body>
 ```
 
-## Create a shape (SVG)
+## 3. Create a shape (SVG)
 
 An SVG (Scalable Vector Graphic) is a way of describing a shape. It uses tags just like HTML, and so can be appended in the same way as the tags above, but it needs particular attention to attributes:
 
@@ -92,7 +92,7 @@ Because spaces don't matter, we can break this across lines to make it easier to
 </body>
 ```
 
-## Create a div bar chart
+## 4. Create a div bar chart
 
 The first D3 chart is almost always a bar chart, because it can be created through simply making a div tag for each value, and colouring it in. Here's some example code with comments explaining what each line does. All you need in the HTML is the tag `<div class="fillmeup"></div>` for it to target.
 
@@ -118,7 +118,7 @@ d3.select('.fillmeup')
 })
 ```
 
-## Create a scale
+## 5. Create a scale
 
 When we get a lot of data values, rather than sizing each bar (div tag) by multipying each data value, it's better to factor in what sort of range of values they use.
 
