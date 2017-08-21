@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8"/>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.10.0/d3.min.js"></script>
+
+  </head>
+  <body>
+    <p>This pen makes the code cleaner than <a href="https://codepen.io/paulbradshaw/pen/eEgeaP">this earlier one</a> by assigning different parts of the chart creation process to variables - one for the chart, another for the bars inside - instead of chaining them all together in one.
+</p>
+<div class="newpars"></div>
+
+<svg class="fillmeup"></svg>
+    <script type="text/javascript">
+
+var somedata;
+// set the width of the canvas
+var width = 600;
+// set the height of bars
+var barHeight = 35;
+//this calculates the range of values in the data - which can then be used below
+var x = d3.scaleLinear()
+    .range([0, width]);
+//This selects all div tags - there is  none so it will then create them
+var chart = d3.select('.fillmeup')
+  .attr("width",width) //we use the width variable defined above
+
+d3.csv("data.csv", type, //the type function here is defined below - it converts the data into numbers
+function(error, data) {
+  if (error) {  //If error is not null, something went wrong.
+          console.log(error);  //Log the error.
+        }
+  else {      //If no error, the file loaded correctly. Yay!
+          console.log(data);
+        }  //Log the data.
+  chart.attr('height',barHeight * data.length); //set extra attribute of chart variable defined earlier
+  x.domain([0, d3.max(data, function(d) { return d.Number; })]); //set domain attribute of x variable defined earlier
+  console.log(d3.max(data, function(d) { return d.Number; }));
+  var bars = chart.selectAll('g') // g is an element in an SVG chart
+    .data(data)
+    .enter()
+    .append('g')
+    .attr("transform", function(d, i) { return "translate(0," + i * barHeight + ")"; });
+  bars.append('rect')
+    .attr('width', function(d) { return x(d.Number); })
+    .attr('height', barHeight - 4);
+  bars.append('text')
+    .attr("x", function(d) { return x(d) - 5; })
+    .attr("y", barHeight / 2)
+    .attr("dy", ".18em")
+    .text(function(d) { return d.Number; });
+  somedata = data;
+  console.log(somedata);
+  console.log(somedata[1]);
+  console.log(somedata[1].Medium);
+  d3.select("div.newpars").selectAll("p.data").data(somedata).enter().append("p")
+    .html(function(d){
+      return d.Medium+": "+d.Number;
+
+    });
+    console.log("Finished adding html")
+  });
+
+  function type(d) {
+    console.log("running type function");
+    console.log(d);
+    console.log(d.Number);
+    console.log(d.Number = +d.Number);
+    d.Number = +d.Number; // coerce to number
+    return d;
+  }
+
+console.log("Note that this code runs before the other console.log commands even though those appear earlier in the code. Also, see how the somedata variable is empty at this point: "+somedata+", yes?");
+    </script>
+  </body>
+</html>
